@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT Assignment</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+    class StudentDetails extends React.Component {
+        constructor () {
+            super();
+        }
+
+        render () {
+            return (
+                <div className="container">
+                    <StudentData />
+                </div>
+            );
+        }
+    }
+
+    class StudentData extends React.Component {
+        constructor () {
+            super();
+            this.state = {
+                studentList: [
+                    {
+                      firstName: 'vishal',
+                      lastName: 'shinde',
+                      marks: {
+                        english: 70,
+                        hindi: 56
+                      }
+                    },
+                    {
+                      firstName: 'parth',
+                      lastName: 'shah',
+                      marks: {
+                        english: 10,
+                        hindi: 50
+                      }
+                    },
+                    {
+                      firstName: 'ankit',
+                      lastName: 'rao',
+                      marks: {
+                        english: 70,
+                        hindi: 20
+                      }
+                    },
+                    {
+                      firstName: 'prasad',
+                      lastName: 'kulkarni',
+                      marks: {
+                        english: 70,
+                        hindi: 30
+                      }
+                    }
+                ],
+                oldList: [
+                    {
+                      firstName: 'vishal',
+                      lastName: 'shinde',
+                      percentage : 80,
+                    },
+                    {
+                      firstName: 'parth',
+                      lastName: 'shah',
+                      percentage : 20,
+                    },
+                    {
+                      firstName: 'ankit',
+                      lastName: 'rao',
+                      percentage : 50,
+                    },
+                    {
+                      firstName: 'prasad',
+                      lastName: 'kulkarni',
+                      percentage : 65,
+                    }
+                ],
+            };
+            this.filterlist = this.filterlist.bind(this);
+            this.resetList = this.resetList.bind(this);
+        }
+
+        filterlist (checkboxText) {
+            let filteredList = _.filter(this.state.studentList, (student, key) => {
+                if(checkboxText === 'Distinction') {
+                    return student.percentage > 75; //it will return an object of student with Distinction
+                } else if (checkboxText === 'First Class') {
+                    return student.percentage < 75 &&  student.percentage >= 60;
+                } else if (checkboxText === 'Second Class') {
+                    return student.percentage < 60 && student.percentage >= 50;
+                } else {
+                    return student.percentage < 35;
+                }
+            });
+            this.setState({
+                studentList: filteredList,
+            })
+        }
+
+        resetList () {
+            this.setState({
+                studentList : this.state.oldList,
+            })
+        }
+
+        render() {
+            let pluckedArray = _.pluck(this.state.studentList, 'marks');
+            // let aggreGate = _.each(pluckedArray,(index, key) => {
+            //     return {...index};
+            // });
+            // console.log(aggreGate);
+              let functionList =   _.map(pluckedArray, (functions, key) => {
+                    return (functions.english + functions.hindi)/2;
+                })
+            console.log(functionList);
+            return (
+                <div>
+                    <SearchComponent studentList={this.state.studentList} requestErrorMsg={this.state.requestErrorMsg}/>
+                    <div>
+                        <ul className="studentListing">
+                              <li className="clearfix">
+                                  <div className="pull-left firstName">FirstName</div>
+                                  <div className="pull-left">LastName</div>
+                                  <div className="pull-left">Percentage</div>
+                              </li>
+                              {_.map(this.state.studentList, (student, key) => {
+                                        return(
+                                          <li key={key} className="clearfix">
+                                              <div className="pull-left firstName">{student.firstName}</div>
+                                              <div className="pull-left">{student.lastName}</div>
+                                          </li>
+                                  );
+                              })}
+                        </ul>
+                    </div>
+                    <div>
+                    </div>
+                    <CheckBox checkboxText='Distinction' filterlist={this.filterlist.bind(this, 'Distinction')} resetList={this.resetList}/>
+                    <CheckBox checkboxText='First Class' filterlist={this.filterlist.bind(this, 'First Class')} resetList={this.resetList}/>
+                    <CheckBox checkboxText='Second Class' filterlist={this.filterlist.bind(this, 'Second Class')} resetList={this.resetList}/>
+                    <CheckBox checkboxText='Fail' filterlist={this.filterlist.bind(this, 'Fail')} resetList={this.resetList}/>
+                </div>
+            );
+        }
+    }
+
+    class CheckBox extends React.Component {
+        constructor () {
+            super();
+            this.state = {
+                boxIsChecked: false,
+            };
+            this.handleCheckBoxChange = this.handleCheckBoxChange.bind(this)
+        }
+
+        handleCheckBoxChange (event)  {
+         //you code
+             this.setState({
+                 boxIsChecked: !this.state.boxIsChecked
+             });
+            if (event.target.checked) {
+                this.props.filterlist();
+            }
+            else {
+                console.log('box is false');
+                this.props.resetList();
+            }
+        }
+
+        render () {
+            return (
+                <div>
+                    <input
+                        type="checkbox"
+                        name="person"
+                        checked={this.state.boxIsChecked}
+                        onChange={this.handleCheckBoxChange.bind(this)}
+                    />
+                    <label>{this.props.checkboxText}</label>
+                </div>
+            );
+        }
+    }
+
+    class SearchComponent extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.searchStudent = this.searchStudent.bind(this);
+            this.state = {
+                childList: [],
+                requestErrorMsg: false,
+            };
+        }
+
+        searchStudent () {
+            let userInput = this.refs.userInput.value;
+            debugger;
+            if(_.isEmpty(userInput) || !isNaN(userInput)) {
+                this.setState({
+                    requestErrorMsg: true,
+                });
+            } else {
+                  let result = _.filter(this.props.studentList , (student, key) => {
+                      if(userInput.indexOf(student.firstName) > -1 || userInput.indexOf(student.lastName) > -1) {
+                          return student;
+                      }
+                  });
+                  this.setState({
+                      childList: result,
+                      requestErrorMsg: false,
+                  });
+                  this.refs.userInput.value = '';
+            }
+        }
+
+        render() {
+            return (
+                <div>
+                    <div className="searchComponent">
+                        <input placeholder='search student' ref='userInput'/>
+                        <button type="submit" className="btn btn-info" onClick={this.searchStudent}>submit</button>
+                    </div>
+                    {this.state.requestErrorMsg
+                        ? <p>enter valid input</p>
+                        : <div>
+                              {this.state.childList.length && this.state.childList
+                                  ? <ul className="studentListing">
+                                        <li className="clearfix">
+                                            <div className="pull-left firstName">FirstName</div>
+                                            <div className="pull-left">LastName</div>
+                                            <div className="pull-left">Percentage</div>
+                                        </li>
+                                        {_.map(this.state.childList, (student, key) => {
+                                            return(
+                                                <li key={key} className={`clearfix ${student.percentage < 35 ? 'redBg' : '' }`}>
+                                                    <div className="pull-left firstName">{student.firstName}</div>
+                                                    <div className="pull-left">{student.lastName}</div>
+                                                    <div className="pull-left">{student.percentage}</div>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                  : <p>no result found</p>
+                              }
+                          </div>
+                    }
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(<StudentDetails />, document.getElementById('app'));
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT search array codeon input change</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <link rel="stylesheet" href="custom.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+    class App extends React.Component {
+
+        constructor () {
+            super();
+            this.state = {
+                studentList: [
+                    {name: 'vishal'},
+                    {name: 'vishal'},
+                    {name: 'satish'},
+                    {name: 'rao'},
+                    {name: 'parth'}
+                ],
+                resultList: [],
+                requestErrormsg: '',
+            };
+      }
+
+        // fetchData () {
+        //     fetch("https://api.github.com/users/repos")
+        //     .then(response => response.json())
+        //     .then(responseData => {
+        //       debugger
+        //       console.log(responseData)
+        //         this.setState({
+        //             githubRepodata: responseData,
+        //         });
+        //     })
+        //     .catch(error => {
+        //         console.log('error fetching the data')
+        //     });
+        // }
+
+        searchResult (searchText) {
+          //filter the array on given condition
+          if(isNaN(searchText)) {
+              let result = _.filter(this.state.studentList, (student, key) => {
+                 if(_.indexOf([student.name], searchText) > -1 ) {
+                     return student;
+                 }
+              });
+              if(result.length) {
+                  this.setState({
+                      resultList: result,
+                      requestErrormsg: false,
+                  })
+             }
+             else {
+                  console.log('no result found')
+             }
+          }
+
+          else if(_.isEmpty(searchText)){
+              console.log('input cannot be empty')
+          }
+
+          else {
+            console.log('enter valid input')
+          }
+
+        }
+
+        render () {
+            return (
+                <div className="container">
+                  <div>{this.state.requestErrormsg ? 'enter valid input': null}</div>
+                  <SearchComponent searchResult={this.searchResult.bind(this)}/>
+                      {this.state.resultList && this.state.resultList.length
+                        ?
+                        <div>
+                            <p>{this.state.resultList.length}result found</p>
+                            {
+                              _.map(this.state.resultList, (student, key) => {
+                                return (
+                                    <div key={key}>
+                                        <p>{student.name}</p>
+                                    </div>
+                                )
+                              })
+                            }
+                        </div>
+                        : null
+                      }
+                </div>
+            );
+        }
+    }
+
+    class SearchComponent extends React.Component {
+        constructor (props) {
+            super(props);
+        }
+
+        handleInputChange (event) {
+            this.props.searchResult(this.refs.input.value);
+        }
+
+        render () {
+        return (
+            <form>
+                <input type="text"
+                    ref='input'
+                    onChange={this.handleInputChange.bind(this)}
+                />
+            </form>
+        )
+      }
+    }
+    ReactDOM.render(<App />, document.getElementById('app'));
+</script>
+</body>
+</html>

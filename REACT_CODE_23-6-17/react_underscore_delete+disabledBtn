@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT underscore delete</title>
+  </head>
+  <style>
+.disabledBtn {
+background-color: grey;
+
+}
+.active{
+background-color: green;
+}	
+.normalClass {
+color:white;}
+  </style>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+    class Parent extends React.Component {
+
+      constructor() {
+        super();
+        this.state = {
+          studentArray: [{
+            name: 'vishal',
+          },
+          {
+            name: 'satish',
+          }],
+          isDisabled: true,
+        };
+      }
+      handleSubmitButton() {
+			let userName = this.refs.inputValue.value;
+          if(!_.isEmpty(userName))
+          {
+              this.setState({
+                  isDisabled: false,
+              });
+          }
+		  else{
+			  this.setState({
+					  isDisabled: true,
+				  });
+		  }
+      }
+      addItem() {
+          let userName = this.refs.inputValue.value;
+          if(_.isEmpty(userName))
+          {
+              console.log('user name cannot be empty')
+          }
+          else {
+              let newArray = this.state.studentArray;
+              newArray.push({
+                name: userName, //pushing new name in array
+              })
+              this.setState({         //re render Component using this.setState
+                  studentArray: newArray, //passing new array
+              });
+			  this.refs.inputValue.value = "" ;
+          }
+		  
+      }
+
+      deleteItem(key) {
+          let newArray = this.state.studentArray //storing old array into new array
+          newArray.splice(key, 1); // delete that element using splice method
+          console.log(`deleted item key :: ${key}`)
+          this.setState({         //re render Component using this.setState
+              studentArray: newArray, //passing new array
+          });
+      }
+      render() {
+        return(
+          <div>
+              <input placeholder="enter name" ref="inputValue" onChange={this.handleSubmitButton.bind(this)}/>
+              <button onClick={this.addItem.bind(this)} className={`normalClass ${this.state.isDisabled ? "disabledBtn" : "active" }`}  disabled={this.state.isDisabled ? true : false}>add new item</button>
+              <ul>
+                {_.map(this.state.studentArray, (index, key) => {
+                    return (
+                        <li key={key}>
+                            <p>{index.name}</p>
+                            <a onClick={this.deleteItem.bind(this, key)}>delete</a>
+                        </li>
+                        )
+                })}
+              </ul>
+          </div>
+        );
+      }
+    }
+    ReactDOM.render(<Parent />, document.getElementById('app'));
+  </script>
+  <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+</body>
+</html>

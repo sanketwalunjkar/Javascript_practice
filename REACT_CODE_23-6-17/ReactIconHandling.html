@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT icon handling</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+    class Parent extends React.Component {
+      //we are using template string for handling the icon classes
+      //glyphicon is the default class for icon 
+      constructor() {
+        super();
+        this.state = {
+          iconStatus: false, //by default we ares showing arrow down icon
+        };
+      }
+      handleIcon() { //function to change icon
+        this.setState({
+          iconStatus: !this.state.iconStatus,//toggle state to change the icon
+        });
+      }
+      render() {
+        return (
+          <div className='mainWrapper text-center clearfix'>
+            <h1 onClick={this.handleIcon.bind(this)}>REACT ICON CHANGE
+                <i
+                  className={`glyphicon ${this.state.iconStatus
+                              ? "glyphicon-arrow-up"
+                              : "glyphicon-arrow-down"}`
+                            }>
+                </i>
+            </h1>
+          </div>
+        );
+      }
+    }
+    ReactDOM.render(
+      <Parent />,
+      document.getElementById('root')
+    );
+
+    </script>
+  </body>
+</html>

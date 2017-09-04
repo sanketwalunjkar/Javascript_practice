@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT To do app</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+      .hide{
+        display: none;
+      }
+      a{
+        display: block;
+        padding: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+    class Parent extends React.Component {
+      //show the add button only after user enter somtehing(done)
+      // how to clear the input filed after onSubmit call (done)
+      //show the count of to do added(done)
+      // how to delete the user entered list(there is some problem only one entry is deleted)
+      //validation on input
+      constructor() {
+        super();
+        this.validateForm = this.validateForm.bind(this);
+        this.state = {
+          oldList: [], //1.empty array to store new values
+          addbuttonStatus: false,//9.new state to handle the add button we will not show this button on page load
+        };
+      }
+
+      handleInputChange(refName) {
+          let userInput= this.refs[refName].value; //11.get userInputin a variable
+          if(userInput) {  //12.if user input somtehing then show the button
+            this.setState({
+              addbuttonStatus: true,
+            });
+          }
+          else {
+            this.setState({
+              addbuttonStatus: false,//13.otherwise hide it
+            });
+          }
+          this.validateForm(refName);
+      }
+
+      validateForm(refName) { //validation function
+        var inputValue = this.refs[refName].value;;
+        if( /[^a-zA-Z0-9\-\/]/.test( inputValue ) ) {
+           alert('you cannot add special characters to note');
+           return false;
+         }
+       return true;
+    }
+
+      handleSubmit(event,refName) { //2.this function will add new items to our previous list
+        event.preventDefault();
+        let newList = this.state.oldList; //3.updating newList with oldList everytime
+        newList.push({
+          userInput: this.refs.input.value, //5.adding user enetered value to new key named as userInput
+          key: Date.now(), //5.for each userInput we are generating unique key
+        });
+        this.setState({
+          oldList: newList, //6.adding contents in oldList after push method  you can acces this oldList in parents render method
+        })
+        this.refs.input.value=''; //14. clear the input field after adding the vlue to list
+      }
+      render() {
+        //7.console.log(this.state.oldList)]
+        //8.pass this to child Component for rendering as a props
+        //10.new function handleInputChange added to handle the state of add button
+        let oldList = this.state.oldList.length;
+        return (
+          <form className='newCommentForm' onSubmit={this.handleSubmit.bind(this)}>
+            <label>REACT TO DO APP</label>
+            <h3>{oldList} task to show </h3>
+            <div className='userData'>
+              <input placeholder='name'
+                ref='input'
+                onChange={this.handleInputChange.bind(this,'input')}
+              />
+            </div>
+            <div className='submitWrapper'>
+              {this.state.addbuttonStatus &&
+                <button type='submit'>add</button>
+              }
+            </div>
+            <Child oldListData={this.state.oldList} />
+          </form>
+        );
+      }
+    }
+    class Child extends React.Component {
+
+      deleteList(refName,event) {
+      /*  event.preventDefault();
+        //this.refs[refName].parentNode.classList.add('hide');
+        this.refs[`${refName}Wrapper`].classList.add('hide');
+        */
+
+      }
+
+      render() {
+        //9.console.log(this.props.oldListData);
+        //10.this data is coming from parent as a props store it in a variable
+        let parentData = this.props.oldListData;
+        //this is an array of objects you have to render it using array.map
+        return(
+          <div>
+            <ul>
+                {parentData.map(list =>
+                    <li ref='deleteWrapper'>
+                      <p>key :: {list.key}</p>
+                      <p>note::{list.userInput}</p>
+                      <a ref='delete' onClick={this.deleteList.bind(this, 'delete')}>delete</a>
+                    </li>
+                  )
+                }
+            </ul>
+          </div>
+        );
+      }
+    }
+    ReactDOM.render(<Parent />, document.getElementById('app'));
+  </script>
+</body>
+</html>

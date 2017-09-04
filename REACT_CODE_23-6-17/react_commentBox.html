@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT Comment Box</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+    class CommentBox extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          showcommentBtn: false,
+        };
+      }
+
+      handleClick () {
+        this.setState({
+          showcommentBtn: !this.state.showcommentBtn,//toggling the show button state
+        });
+      }
+
+      getComments() {
+        const commentList = [ //this array will be dynamic
+          {
+            author: 'parth',
+            body: 'this is great',
+            id: Math.floor((Math.random() * 100) + 1)
+          },
+          {
+            author: 'vishal',
+            body: 'you are awesome',
+            id: Math.floor((Math.random() * 100) + 1)
+          }
+        ];
+        return commentList.map( (comment) => {
+          return (<Comment author={comment.author} body={comment.body} keys={comment.id}/>); //passing dynamic props
+        });
+      }
+
+      getCommentsTitle(count) {
+        if(count == 0) {
+          return 'no Comments' ;
+        }
+        else if(count == 1) {
+          return '1 comment'
+        }
+        else {
+          return `${count} Comments`;
+        }
+      }
+
+      render() {
+        const result = this.getComments(); //storing the getComments method's result in result variable
+        let buttonText = 'show'; //initial button text will be show
+        if(this.state.showcommentBtn) { //toggle the text from button from show to hide
+          buttonText = 'hide';
+        }
+        return (
+          <div className='mainWrapper text-center clearfix'>
+            <h1>comment box</h1>
+            <button onClick={this.handleClick.bind(this)}>{buttonText} Comment</button>
+            <h3>{this.getCommentsTitle(result.length)}</h3>
+            {this.state.showcommentBtn &&
+              <div>{result}</div>
+            }
+
+          </div>
+        );
+      }
+    }
+
+    class Comment extends React.Component {
+      render() {
+        return (
+          <div className='mainWrapper text-center clearfix'>
+            <p>key ::{this.props.keys}</p>
+            <p>author name ::{this.props.author}</p>
+            <p>author comment ::{this.props.body}</p>
+            <a>Delete Comments</a>
+          </div>
+        );
+      }
+    }
+    ReactDOM.render(<CommentBox />, document.getElementById('app'));
+  </script>
+</body>
+</html>

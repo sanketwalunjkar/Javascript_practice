@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT MAP FUNCTION</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+    class Parent extends React.Component {
+      render() {
+
+        const topicList = [
+          {
+            name: 'vishal',
+            key: Math.floor((Math.random() * 100) + 1),
+          },
+          {
+            name: 'parth',
+            key: Math.floor((Math.random() * 100) + 1),
+          },
+        ];
+
+        return (
+          <div className='mainWrapper text-center clearfix'>
+            <h1>REACT .map function</h1>
+            <ul>
+              {topicList.map(topic =>
+                <li>keyNumber ::{topic.key},member Name::{topic.name}</li>
+              )}
+            </ul>
+            </div>
+        );
+    }
+  }
+
+    ReactDOM.render(<Parent />,document.getElementById('app'));
+  </script>
+</body>
+</html>

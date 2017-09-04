@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>REACT APP SCOREBOARD</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+    class Parent extends React.Component {
+
+      render() {
+        return (
+          <div className='mainWrapper text-center clearfix'>
+            <h1>REACT SCORE UPDATER</h1>
+            <Player />
+            <Counter />
+          </div>
+        );
+      }
+    }
+    class Player extends React.Component {
+      render() {
+        return (
+          <div>
+            <p>player name :: vishal</p>
+          </div>
+        );
+      }
+    }
+    class Counter extends React.Component {
+      constructor() {
+        super();
+        this.incrementScore = this.incrementScore.bind(this);
+        this.decrementScore = this.decrementScore.bind(this);
+        this.state = {
+          score: 0,
+        };
+      };
+
+      incrementScore() {
+        this.setState({
+          score: (this.state.score + 1),
+        })
+      }
+
+      decrementScore() {
+        if(this.state.score > 0){ //check for negative value
+          this.setState({
+            score: (this.state.score - 1),
+          })
+        }
+      }
+
+      render() {
+        return (
+          <div className='wrapper'>
+            <div className='counter clearfix'>
+              <button className='btn btn-primary' onClick={this.decrementScore}>decrement</button>
+              <button className='btn btn-danger'>{this.state.score}</button>
+              <button className='btn btn-primary' onClick={this.incrementScore}>increment</button>
+            </div>
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <Parent />,
+      document.getElementById('root')
+    );
+
+    </script>
+  </body>
+</html>
