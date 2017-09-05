@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_let_method</title>
+</head>
+<body>
+<div class="container">
+</div>
+<script type="text/javascript">
+
+var a = 1;//variable declared outside the function have global scope
+var b = 2;
+
+if (a === 1) {//let variables are block-scoped.
+  var a = 11; // the scope is global .its scope is outside&inside of if block
+  let b = 22; // the scope is inside the if-block
+
+  console.log(a);  // 11
+  console.log(b);  // 22
+}
+
+console.log(a); // 11
+console.log(b); // 2
+
+/*Redeclaring a variable with let is a SyntaxError.
+let vishal;
+let vishal; it will throw an error
+*/
+</script>
+</body>
+</html>

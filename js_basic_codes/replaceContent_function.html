@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>update name function</title>
+</head>
+<body>
+<div class="container">
+<p>click to change the name</p>
+</div>
+ <script type="text/javascript">
+ var para =document.querySelector('p');// we are selecting a text paragraph
+ para.addEventListener('click',updateName);//attaching an event listener to para object
+ function updateName()
+ {
+   var name = prompt('enter the new name');
+
+    para.textContent = 'Player 1: ' + name;//it will replace the content from p tag
+ }
+</script>
+</body>
+</html>

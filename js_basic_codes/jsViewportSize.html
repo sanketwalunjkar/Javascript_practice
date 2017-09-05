@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsViewPortSize</title>
+</head>
+<body>
+          <script>
+          window.addEventListener("resize", displayViewportSize, false);
+
+  function displayViewportSize(e) {
+    var viewportWidth = document.documentElement.clientWidth;
+    var viewportHeight = document.documentElement.clientHeight;
+    document.write(viewportWidth + '<br>');
+    document.write(viewportHeight);
+
+  }
+/*
+The viewport refers to the portion of your browser that is actually used for displaying your web page:
+The viewport does not include your browser chrome (ha!). It does not include your address bar or any other type of persistent UI that takes away space.Lastly, and this is important, your viewport also does not include the space taken up by scrollbars.
+
+*/
+          </script>
+
+
+</body>
+</html>

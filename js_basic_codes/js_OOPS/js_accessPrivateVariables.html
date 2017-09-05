@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_accessPrivate variables</title>
+</head>
+<body>
+<div class="container">
+</div>
+<script type="text/javascript">
+function Person(name,age)
+{
+this.name=name;//public
+this.age=age;//public
+var salary=30000//private
+//in order to access the salary varible outsid of the clas you need to define public method
+  this.getSalary=function(){
+
+  return salary; //here we are returning private variable to outside of the class
+  };
+}
+var vishal=new Person('vishal shinde',22);//object vishal created
+var answer=vishal.getSalary(); //storing the salary in answer variable
+document.write(answer);//printing the answer variable
+</script>
+</body>
+</html>

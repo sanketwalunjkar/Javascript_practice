@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>even odd using function</title>
+</head>
+<body>
+<div class="container">
+</div>
+ <script type="text/javascript">
+function even_odd(num){  //here a is stored in num variable
+
+  if(num % 2 === 0)//num variable have local scope
+  {
+    document.write("number is even");
+  }
+  else
+  {
+    document.write("number is odd");
+  }
+}
+var a=prompt("enter the number");
+var result=even_odd(a); //a variable have global scope
+
+</script>
+</body>
+</html>

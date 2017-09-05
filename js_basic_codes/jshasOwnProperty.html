@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jshasOwnProperty</title>
+</head>
+<body>
+<script>
+//hasOwnProperty checks whether the object have
+var person=new Object();
+
+person.name="vishal";
+
+document.write(person.hasOwnProperty('name'));//it will return true as person object have the property called 'name'
+//now we will use if else loop
+
+if(person.hasOwnProperty('age')) {
+  document.write(person.age);
+
+}
+else {//if object is not having the property age we will set it
+    person.age='22';
+    document.write('<br>'+person.age);
+}
+</script>
+</body>
+</html>

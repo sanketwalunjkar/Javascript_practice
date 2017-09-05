@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_inheritance1</title>
+</head>
+<body>
+<div class="container">
+</div>
+<script type="text/javascript">
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+
+// create your Emperor class here and make it inherit from Penguin
+function Emperor(name) {
+    this.name = name;
+}
+Emperor.prototype=new Penguin();
+
+// create an "emperor" object and print the number of legs it has
+var emperor=new Emperor();
+emperor.numLegs=2;
+document.write(emperor.numLegs);
+
+</script>
+</body>
+</html>

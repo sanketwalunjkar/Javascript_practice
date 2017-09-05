@@ -1,0 +1,18 @@
+object(Noun) :it have some properties. Exa :apple
+
+function(verb): which performs the action on objects. Exa :he ate an apple
+
+javascript is also object oriented language.
+
+types of objects 1)functional  2)non functional
+apple is object and color,height,width,weight are its properties.
+functions are also objects.
+
+now 
+apple{
+color:red;
+height:20px;
+width:20px;
+weight:200gram;
+eat
+}

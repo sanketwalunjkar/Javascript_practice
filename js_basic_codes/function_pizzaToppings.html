@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>pizzaToppings</title>
+</head>
+<body>
+<div class="container">
+
+
+</div>
+ <script type="text/javascript">
+ function takeOrder()
+ {
+   var a =prompt('please enter the pizza name');
+   return a;
+
+ }
+
+function getprice(orderCount)
+{
+  return 4 *orderCount;
+}
+var order=takeOrder();
+document.write("you have oredered ::"+order +"<br>");
+
+document.write(getprice(2));
+</script>
+</body>
+</html>

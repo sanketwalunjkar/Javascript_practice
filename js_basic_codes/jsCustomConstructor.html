@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_custom_contrucotr</title>
+</head>
+<body>
+  <script>
+  //Constructors are a way to make objects with the keyword new
+  //The most basic constructor is the Object constructor, which will make an object with no methods or properties.
+  function Person(name,age){ //this is the function for Person constructor
+    this.name=name;
+    this.age=age;
+  } //by using this we can directly create number of person list only by giving the values
+
+var vishal=new Person('vishal',22);//person is the new constructor created by us
+var satish=new Person('vishal',18);
+var parth=new Person('parth',21);
+
+document.write("1)name ::"+ vishal.name+" 2) age:: " +vishal.age+"</br></br>");
+document.write("1)name ::"+ parth.name+" 2)age:: "  +parth.age+"</br></br>");
+document.write("1)name ::"+ satish.name+" 2)age:: "  +satish.age+"</br></br>");
+</script>
+</body>
+</html>

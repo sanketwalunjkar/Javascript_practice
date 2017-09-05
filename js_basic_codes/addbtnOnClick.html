@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>add btn on button click</title>
+</head>
+<body>
+<div class="container">
+<button >click to create the button</button><!--this will not create any button-->
+</div>
+ <script type="text/javascript">
+
+
+var buttons=document.querySelector('button');//select all buttons
+buttons.addEventListener('click', createBtn);//when button is clicked function is called
+
+function createBtn()
+{
+  var para =document.createElement('button');//new element is created
+  para.textContent='this is your new button'.toUpperCase();//new content
+  document.body.appendChild(para);//append new element on body
+}
+
+ </script>y
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_public&private varibales</title>
+</head>
+<body>
+<div class="container">
+</div>
+<script type="text/javascript">
+var languages = {
+    english: "Hello!",
+    french: "Bonjour!",
+    notALanguage: 4,
+    spanish: "Hola!"
+};
+// print hello in the 3 different languages
+for(var x in languages)
+{
+    if(typeof(languages[x])==='string')
+    {
+              document.write(languages[x]);
+            }
+    else
+    {
+                document.write('error !! not a string');
+    }
+}
+</script>
+</body>
+</html>

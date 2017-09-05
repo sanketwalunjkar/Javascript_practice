@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsMethodWithThis</title>
+</head>
+<body>
+  <script>
+/*
+  var setAge = function (newAge) {//this is function to change the info of person
+    this.age = newAge;
+  };
+
+  var bob = new Object();//creation of new object
+  bob.age = 30;
+  bob.setAge = setAge;//this is method to set the age
+
+  bob.setAge(35);//her we have called the setAge method
+
+  var susan=new Object();
+  susan.age = 30;
+  susan.setAge = setAge;
+
+  susan.setAge(20);
+
+  document.write("Bob age :: "+bob.age);
+  document.write("<br>Susan age :: "+susan.age);
+*/
+
+var updateInfo=function(newAge,newHobby)
+{
+  this.age=newAge;
+  this.hobby=newHobby;
+}//this function will update both things
+
+var vishal=new Object();
+
+vishal.age=20;
+vishal.hobby="football";
+vishal.updateInfo=updateInfo;//this is the method
+
+document.write("current age of vishal is ::"+vishal.age+ "<br>current hobby of vishal is playing ::" +vishal.hobby);
+vishal.updateInfo(22,'cricket');
+document.write("<br>updated age of vishal is ::"+vishal.age+ "<br>updated hobby of vishal is playing ::" +vishal.hobby);
+
+</script>
+</body>
+</html>
