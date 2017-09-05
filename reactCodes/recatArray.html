@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Array Mapping</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id='root'></div>
+  </div>
+
+  <script type="text/babel">
+  var Child = React.createClass({
+    render: function() {
+      const array = ['vishal','rao ','parth'];
+      return(
+        <div>
+          <ul>
+          {array.map(topic => <li>{topic}</li>)}
+          </ul>
+        </div>
+      );
+    }
+  });
+
+  ReactDOM.render(
+    <Child />,
+    document.getElementById('root')
+  );
+</script>
+</body>
+
+</html>

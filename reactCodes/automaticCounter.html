@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>toggleContentOnClick</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<style>
+body{
+  background-color: #eee;
+  font-family: monospace,sans-serif;
+}
+.container{
+  width:1170px;
+  margin: 0 auto;
+}
+.cardWrapper{
+  height: 400px;
+  width: 350px;
+  padding: 0;
+  background-color: #eee;
+  border: 1px solid red;
+}
+.red{
+  color:red;
+}
+.blue{
+  color:blue;
+}
+</style>
+
+</head>
+
+<body>
+  <!--it is automatic counter updating every second-->
+  <div class="container">
+    <div id='root'></div>
+  </div>
+
+  <script type="text/babel">
+
+  var DisplayClock = React.createClass({
+
+  getInitialState:function(){
+    return ({
+      counter : 0
+    });
+  },
+
+  incrementCounter:function(){
+    this.setState({
+      counter : this.state.counter + 1000
+    });
+  },
+
+  componentDidMount :function(){
+    setInterval(this.incrementCounter,1000);
+  },
+  resetCounter:function(){
+    this.setState(
+      {
+          counter: 0
+      }
+    );
+
+  },
+    render: function() {
+      return(
+        <div>
+          <h1> automatic counter :: {this.state.counter}</h1>
+          <button onClick={this.resetCounter} className="btn btn-large btn-danger">reset</button>
+        </div>
+      );
+    }
+  });
+
+  ReactDOM.render(
+    <DisplayClock/>,
+    document.getElementById('root')
+  );
+</script>
+</body>
+
+</html>

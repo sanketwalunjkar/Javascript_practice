@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>toDoList</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<style>
+body {
+  padding: 50px;
+  background-color: #66CCFF;
+  font-family: sans-serif;
+}
+.todoListMain .header input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #FFF;
+}
+.todoListMain .header button {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  background-color: #0066FF;
+  color: #FFF;
+  border: 2px solid #0066FF;
+}
+
+.todoListMain .header button:hover {
+  background-color: #003399;
+  border: 2px solid #003399;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div id='root'></div>
+  </div>
+
+  <script type="text/babel">
+
+  var TodoItems = React.createClass({
+  render: function() {
+    var todoEntries = this.props.entries; //getting dat from parent component usinf props
+
+    function createTasks(item) {
+      return <li key={item.key}>{item.text}</li>
+    }
+
+    var listItems = todoEntries.map(createTasks); //store the result of create task function
+
+    return (
+      <ul className="theList">//rendering the result to screen
+        {listItems}  //adding the elements using li
+      </ul>
+    );
+  }
+});
+
+  var ToDoList = React.createClass({ //main component
+
+    getInitialState: function() {
+    return {
+      items: []  //storing the initial state in e
+        };
+  },
+  addItem: function(e) {
+    var itemArray = this.state.items;
+    itemArray.push(
+      {
+        text: this._inputElement.value,
+        key: Date.now()
+      });
+
+      this.setState({
+        items: itemArray //getting the values in item array from itemarray(updating it)
+      });
+
+       this._inputElement.value = "";
+      e.preventDefault();
+
+ },
+  resetList :function(){
+    this.setState({
+        items: [] /* reseting the list */
+    });
+  },
+    render: function() {
+      return(
+        <div className="todoListMain">
+          <div className="header">
+            <form onSubmit={this.addItem}>
+              <input placeholder="enter task" ref={(a) => this._inputElement = a}>
+              </input>
+              <button type="submit">Add</button>
+            </form>
+            <button type="submit" onClick={this.resetList}>Reset</button>
+          </div>
+          <TodoItems entries={this.state.items}/> //rendering the child component and pasing the state
+        </div>
+      );
+    }
+  });
+  ReactDOM.render(
+    <ToDoList />,
+    document.getElementById('root')
+  );
+</script>
+</body>
+</html>

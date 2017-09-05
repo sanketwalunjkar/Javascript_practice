@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>props from parent to child</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<style>
+body{
+  background-color: #eee;
+  font-family: monospace,sans-serif;
+}
+.container{
+  width:1170px;
+  margin: 0 auto;
+}
+.cardWrapper{
+  height: 400px;
+  width: 550px;
+  padding: 0;
+  background-color: #eee;
+  border: 1px solid red;
+}
+</style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div id='root'></div>
+  </div>
+
+  <script type="text/babel">
+  var CounterParent = React.createClass({
+    getDefaultProps: function(){   {/* it will define the default props value ( rendered only once)* its been set before the component is created/}
+      console.log("getDefaultProps: Default prop time!");
+      return {};
+    },
+
+    getInitialState: function() {  {/* it will define the default state value ( rendered only once)* its been set before the component is created/}
+      console.log("getInitialState: Default state time!");
+      return {
+        count: 0
+      };
+    },
+
+    increase: function() {  {/* function used to update the state of the component  it calls the render method again*/}
+      this.setState({
+        count: this.state.count + 1
+      });
+    },
+
+    componentWillMount: function() {  { /*( rendered only once) before the render*/}
+        console.log("componentWillMount: Component is about to mount!");
+    },
+
+    componentDidMount: function() {   { /*( rendered only once) called after the render*/}
+        console.log("componentDidMount: Component just mounted!");
+    },
+
+    shouldComponentUpdate: function(newProps, newState) {  { /*it only return true or false value */}
+      console.log("shouldComponentUpdate: Should component update?");
+
+      if (newState.count < 5) {   { /* increment of value willl be only upto 4 */}
+        console.log("shouldComponentUpdate: Component should update!");
+        return true;{ /* update the component */}
+        }
+      else {
+        ReactDOM.unmountComponentAtNode(root); { /* if value is greater than 4 then remove the element from DOM  .(root is where we ahve appended the component)*/}
+        console.log("shouldComponentUpdate: Component should not update!");
+        { /*document.write('component removed from DOM because count is exceed 4'); */}
+        return false; { /* now do not update the component */}
+        }
+    },
+
+    componentWillUpdate: function(newProps, newState) {  { /* called when component is about to update called before the render  */}
+        console.log("componentWillUpdate: Component is about to update!");
+    },
+
+    componentDidUpdate: function(currentProps, currentState) { { /* called before the render*/}
+        console.log("componentDidUpdate: Component just updated!");
+    },
+
+    componentWillUnmount: function() {  { /* called before the component is removed from DOM */}
+        console.log("componentWillUnmount: Component is about to be removed from the DOM!");
+    },
+
+    componentWillReceiveProps: function(newProps){  {/* new prop value are recieved using this method*/}
+      console.log("componentWillReceiveProps: Component will get new props!");
+    },
+
+    render: function(){
+        return (
+          <div className="cardWrapper">
+            <h1>ssCurrent count ::  {this.state.count}</h1>
+            <button onClick={this.increase} className ="btn btn-success">Increment</button>
+          </div>
+        );
+      }
+  });
+  ReactDOM.render(<CounterParent />,document.getElementById('root'));
+</script>
+</body>
+
+</html>
