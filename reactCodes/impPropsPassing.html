@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>props from parent to child</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<style>
+body{
+  background-color: #eee;
+  font-family: monospace,sans-serif;
+}
+.container{
+  width:1170px;
+  margin: 0 auto;
+}
+.cardWrapper{
+  height: 400px;
+  width: 350px;
+  padding: 0;
+  background-color: #eee;
+  border: 1px solid red;
+}
+</style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div id='root'></div>
+  </div>
+
+  <script type="text/babel">
+
+
+  var Child = React.createClass({
+    render: function() {
+      return(
+        <div>
+          <h2>Child data :: {this.props.color}</h2>
+          <SubChild color={'subchild ' + this.props.color} />
+        </div>
+      );
+    }
+  });
+
+  var SubChild = React.createClass({
+    render: function() {
+      return(
+        <div>
+          <h2>SubChild data :: {this.props.color}</h2>
+        </div>
+      );
+    }
+  });
+
+
+    var Parent=React.createClass({
+      render:function(){
+        return (
+          <div>
+            <div className="cardWrapper">
+              <Child  color="red"/>
+
+            </div>
+          </div>
+         );
+    }
+
+    });
+
+  ReactDOM.render(
+    <Parent />,
+    document.getElementById('root')
+  );
+</script>
+</body>
+
+</html>
