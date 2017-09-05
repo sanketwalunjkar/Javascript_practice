@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_inheritance</title>
+</head>
+<body>
+<div class="container">
+</div>
+<script type="text/javascript">
+// the original Animal class and sayName method
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+}
+Animal.prototype.sayName = function() {
+    document.write("Hi my name is " + this.name);
+};
+
+// define a Penguin class
+function Penguin(name){
+    this.name=name;
+    this.numLegs=2;
+    }
+    // set its prototype to be a new instance of Animal
+
+    Penguin.prototype = new Animal();//this will tell to inherit the properties
+var penguin=new Penguin('pintu');
+penguin.sayName(); //now sayName method of animal class will also work for penguin due to inheritance
+
+
+
+</script>
+</body>
+</html>

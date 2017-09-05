@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Continue</title>
+</head>
+<body>
+  <button>click the button</button>
+<script>
+//The continue statement tells the interpreter to immediately
+// start the next iteration of the loop and skip the remaining code block.
+/*for(var i=0;i<10;i++)
+{
+  if(i===5)
+  {
+      continue;//it will skip this
+  }
+  document.write(i);//so output will be 0,to 9 except 5
+
+}
+
+/*
+another program
+
+for (var i = 0; i < 3; i++)
+         {
+            document.write("value of outerloop: " + i + "<br />");
+            for (var j = 0; j < 5; j++)
+            {
+               if (j == 3){
+                  continue;
+               }
+               document.write("value of Innerloop: " + j + "<br />");
+            }
+         }
+/*loop will run like this
+for i=0 j=0,1,2,4
+for i=1 j=0,1,2,4
+for i=2 j=0,1,2,4
+when j=3 loop will skip this conidition so 3 will not be printed
+
+
+*/
+var btn=document.querySelector('button');
+btn.On('click',function(){
+  document.write("hi");
+});
+</script>
+</body>
+</html>

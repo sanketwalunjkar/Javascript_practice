@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_public&private varibales</title>
+</head>
+<body>
+<div class="container">
+</div>
+<script type="text/javascript">
+function Person(name,age)
+{
+  this.name=name;//these are public variables
+  this.age=age;//these are public variables they can be accessed outside of the class
+  var profession='employee';//these is privat variable it can not be accessed outside of the class
+  this.getSalary=function(){};//this is public method
+  var getSalary=function(){};//this is private method (we have used the var)
+}
+var vishal=new Person('vishal',22);
+document.write("public ::"+vishal.name);//it will print name
+document.write("<br>private ::"+vishal.profession);//it will not print the profession
+
+</script>
+</body>
+</html>

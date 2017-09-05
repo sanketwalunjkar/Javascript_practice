@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>dragonGame</title>
+</head>
+<body>
+<div class="container">
+</div>
+ <script type="text/javascript">
+ var slaying=true;
+ var youHit=Math.floor(Math.random()*2);
+ var damageThisRound=Math.floor(Math.random()*5+1);
+ var totalDamage=0;
+ while(slaying){
+     if(youHit){
+         document.write('you hit the dragon');
+         totalDamage+=damageThisRound;
+         if(totalDamage>=4)
+             {
+                 document.write('player slew the dragon ');
+                 }
+                 else{
+                     youHit=Math.floor(Math.random()*2);
+                     }
+         }
+         else{
+         document.write('dragon defeated you');
+             }
+     slaying=false;
+     } </script>
+</body>
+</html>

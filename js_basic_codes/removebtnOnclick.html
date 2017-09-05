@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>rmove btn on  click</title>
+</head>
+<body>
+<div class="container">
+<button >click to remove me !!!</button><!--this will not create any button-->
+</div>
+ <script type="text/javascript">
+
+
+var buttons =document.querySelector('button');
+buttons.addEventListener('click',removeBtn);
+function removeBtn()
+{
+  buttons.parentNode.removeChild(buttons);
+}
+ </script>
+</body>
+</html>

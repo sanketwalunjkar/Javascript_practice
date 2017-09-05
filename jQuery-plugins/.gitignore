@@ -1,0 +1,11 @@
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp/sessions/*
+/tmp/cache/*
+#Ignore all .Idea
+.idea
+/tmp/*
+.idea/*
+Gemfile.lock
+config/database.yml
+public/system/

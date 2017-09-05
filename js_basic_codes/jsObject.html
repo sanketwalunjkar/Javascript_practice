@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsObject</title>
+</head>
+<body>
+  <script>
+  //You can also think of objects as combinations of key-value pairs (like arrays),
+  //only their keys don't have to be numbers like 0, 1, or 2: they can be strings and variables.
+  /*
+syntax
+
+    var myObject = {
+      key: value,
+      key: value,
+      key: value
+  };
+  */
+//method 1)object using literal notation
+var cricket={
+  god:'sachin',//please note there is no semicolon
+  age:10,
+  array:['this is array stored in object']
+}
+document.write(cricket.god,cricket.age,cricket.array)//print the object value
+//method 2)object  using constructor
+  var me=new Object();//This tells JavaScript: "I want you to make me a new thing, and I want that thing to be an Object.
+  me.name='vishal';//arrayName.property=value
+  me.age=15;
+  document.write('<br>'+me.name)//print the object value
+</script>
+</body>
+</html>

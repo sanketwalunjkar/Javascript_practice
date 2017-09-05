@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsMethodAreaOfCircle</title>
+</head>
+<body>
+  <script>
+  var calcArea=function(radius){
+   return this.radius * this.radius * 3.14;
+  };
+
+var circle=new Object();
+
+circle.radius=4;
+circle.calcArea=calcArea;//here we are callign the method
+
+var answer=circle.calcArea();//calling the function
+document.write(answer);
+
+
+
+</script>
+</body>
+</html>

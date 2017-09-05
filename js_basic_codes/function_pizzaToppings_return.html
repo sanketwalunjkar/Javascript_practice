@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>pizzaToppings with return</title>
+</head>
+<body>
+<div class="container">
+</div>
+ <script type="text/javascript">
+ var pizzaOrdered;//1
+ var orderCount=0;//2
+ function takeOrder(topping,crustType){//4
+   orderCount =orderCount + 1;//5
+   document.write('Order: "'+ crustType+' "pizza topped with "'+ topping +'"<br>');//6
+ }
+ function finalPrice(){//8
+ return initialPrice(orderCount) + tax(); //9
+}
+   function tax(){//10
+   return initialPrice(orderCount) * 0.06;//11
+ }
+ function initialPrice(itemCount){//12
+   return itemCount * 7.5;//13
+ }
+ takeOrder("","thin crust");//3
+ document.write(finalPrice());//7
+</script>
+</body>
+</html>

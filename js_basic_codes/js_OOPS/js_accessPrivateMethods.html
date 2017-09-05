@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>js_accessPrivate methods</title>
+</head>
+<body>
+<div class="container">
+</div>
+<script type="text/javascript">
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+
+   var returnBalance = function() {
+      return bankBalance;//this is private method
+   };
+
+   // create the new function here
+   this.askTeller = function(){ //making hte method returnBalance public
+       return returnBalance;
+       };
+}
+
+var john = new Person('John','Smith',30);//defining new object
+document.write(john.returnBalance);//it will print undefined as method is private
+var myBalanceMethod = john.askTeller();
+var myBalance = myBalanceMethod();
+document.write(myBalance);
+</script>
+</body>
+</html>

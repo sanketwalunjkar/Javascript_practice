@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BREAk</title>
+</head>
+<body>
+<script>
+//The continue statement tells the interpreter to immediately
+/* start the next iteration of the loop and skip the remaining code block.
+for(var i=0;i<10;i++)
+{
+  if(i===5)
+  {
+      break;//it will break  the entire loop
+  }
+  document.write ( i +"<br>");//so output will be 0,1,2,3,4
+
+}
+*/
+//program 2
+for (var i = 0; i < 3; i++)
+         {
+            document.write("value of outerloop: " + i + "<br />");
+
+            for (var j = 0; j < 5; j++)
+            {
+               if (j == 3){
+                  break;
+               }
+               document.write("value of Innerloop: " + j + "<br />");
+            }
+         }
+/*
+for i=0 j=0,1,2
+for i=1 j=0,1,2
+for i=2 j=0,1,2
+when j==3 inner loop will break
+*/
+//program 3
+for (var i = 0; i < 3; i++)
+         {
+            document.write("value of outerloop: " + i + "<br />");
+            if (i == 1){
+               break;
+
+            for (var j = 0; j < 5; j++)
+            {
+               }
+               document.write("value of Innerloop: " + j + "<br />");
+            }
+         }
+
+/*
+when i=0 j=0,1,2,3,4
+when i=1 outerloop will break so auyomatically inner loop will break
+
+*/
+</script>
+</body>
+</html>

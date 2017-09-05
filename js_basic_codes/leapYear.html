@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>check leap year</title>
+</head>
+<body>
+<div class="container">
+
+    <input id="userInput" type="text" placeholder="enter year to check"/>
+    <button >check</button>
+
+</div>
+
+<script type="text/javascript">
+var buttons=document.querySelector('button');//select all buttons
+buttons.addEventListener('click', checkYear);//when button is clicked function is called
+function checkYear()
+{
+  var year =document.getElementById('userInput').value;
+  if(isNaN(year)){
+      alert('not a number');
+  }
+  else{
+    if( (year % 4  == 0 ) && ( year % 100  != 0) || ( year % 400  == 0) )
+		{
+			alert(year + " is a leap year");
+		}
+		else
+		{
+			alert(year + " is not a leap year");
+		}
+  }
+}
+ </script>
+</body>
+</html>

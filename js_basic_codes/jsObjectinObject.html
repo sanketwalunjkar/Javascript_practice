@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsObjectinObject</title>
+</head>
+<body>
+  <script>
+//  1)first method
+  var object1={
+    object2:{},//this is an empty object inside the object
+    object3:{},
+    name:'vishal'
+}
+
+//second method using constructor
+var myObject=new Object();
+
+myObject.object4=new Object();
+myObject.object5=new Object();
+
+//adding the values to your object which is inside myObject
+myObject.object4.name='vishal';//this object4 is
+document.write(myObject.object4.name);
+
+/*
+var friends={
+  //bill and steve are objects of object(friends)
+    bill:{
+        firstName:'vishal',
+        lastName:'shinde',
+        number:8087124688,
+        address:['flat no 12 subhash terrace']
+        },
+
+    steve:{
+        firstName:'parth',
+        lastName:'shah',
+        number:8087124,
+        address:['flat no 13']
+        }
+    }
+*/
+</script>
+</body>
+</html>

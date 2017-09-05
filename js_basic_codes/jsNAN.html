@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsNaN</title>
+</head>
+<body>
+<div class="container">
+</div>
+<script>
+
+ function evenNumber() {
+
+number=Math.floor(Math.random()*13);// used to generate ranodm number
+// var number=prompt('enter the number'); //for manual input
+document.write(number);
+    if(number % 2 === 0)
+    {
+        document.write('even number');
+    }
+    else if(isNaN(number))
+    {
+        document.write('<br>not a number');//for this case you need to enter manual input
+    }
+    else{
+        document.write('odd number')
+        }
+};
+
+evenNumber();
+ </script>
+</body>
+</html>

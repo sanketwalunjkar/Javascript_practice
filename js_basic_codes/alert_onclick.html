@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>add btn on button click</title>
+</head>
+<body>
+<div class="container">
+<button id="btn">click to create the button</button><!--this will not create any button-->
+</div>
+ <script type="text/javascript">
+
+ //var buttons=document.querySelector('button');//select all buttons from page
+var buttons=document.getElementById('btn');//select all buttons havin id btn
+
+buttons.addEventListener('click', showAlert);//when button is clicked function is called
+
+function showAlert()
+{
+document.write("hi");
+//alert("hi");
+}
+
+
+document.write(num);
+ </script>
+</body>
+</html>

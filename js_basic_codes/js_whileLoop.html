@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsWhileLoop</title>
+</head>
+<body>
+<div class="container">
+</div>
+ <script type="text/javascript">
+ var cards=['Diamond', 'Spade', 'Heart', 'Club'];
+var currentCard='Heart';
+while (currentCard !== 'Spade') {
+  document.write(currentCard);
+  var randomNumber = Math.floor(Math.random() * 4);
+  currentCard = cards[randomNumber];
+}
+/*
+var n=0;
+var x=0;
+while(n<3)
+{
+n++;
+x+=n;
+  document.write('value of n :: ' + n + ' and  x :: ' +  x +'<br>');
+
+}
+*/
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsLoopCompare</title>
+</head>
+<body>
+<div class="container">
+</div>
+ <script type="text/javascript">
+
+ var myPlaces = ['Paris', 'New York', 'Barcelona'];
+ var friendPlaces = ['Paris', 'ew York', 'Balona'];
+ var count=0;
+ for(var i = 0; i < myPlaces.length; i++)
+    {
+      for(var j = 0 ; j < friendPlaces.length ; j++)
+        {
+          if(myPlaces[i] === friendPlaces[j])
+              {
+                count++;
+              }
+        }
+}
+if (count>0)
+{
+document.write('match found :: ' + count);
+}
+else
+{
+  document.write(' no match found!!! ' );
+}
+
+</script>
+</body>
+</html>

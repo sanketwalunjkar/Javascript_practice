@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>important program using array,objects,constructor</title>
+</head>
+<body>
+<script>
+function Person(name,age,sex) //defining the constructor
+{
+  this.name=name;
+  this.age=age;
+  this.sex=sex;
+//defining an empty array
+var family=new Array;
+//using constructor
+family[0]=new Person("raosaheb",50,"male");
+family[1]=new Person("kalpana",40,"female");
+family[2]=new Person("vishal",22,"male");
+family[3]=new Person("priyanka",20,"female");
+family[4]=new Person("satish",18,"male");
+//using for loop to print the information
+for(var i=0;i<family.length;i++)
+{
+
+  document.write(" " + family[i].name +" " +family[i].age +" "+family[i].sex +"<br>");
+}
+</script>
+</body>
+</html>

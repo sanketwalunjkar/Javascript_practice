@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsConstructorDetails</title>
+</head>
+<body>
+  <script>
+  function Rabbit(adjective) {
+    this.adjective = adjective;
+    this.describeMyself = function() {
+        document.write("I am a " + this.adjective + " rabbit<br>");
+    };
+}
+
+// now we can easily make all of our rabbits
+var rabbit1=new Rabbit('fluffy');//we have created new objects using rabbit constructor
+var rabbit2= new Rabbit('happy');
+var rabbit3= new Rabbit('sleepy');
+
+var answer=rabbit1.describeMyself(); //call to the constructor
+var answer=rabbit2.describeMyself();
+var answer=rabbit3.describeMyself();
+
+</script>
+</body>
+</html>

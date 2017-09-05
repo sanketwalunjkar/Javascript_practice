@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>area of circle</title>
+</head>
+<body>
+<div class="container">
+</div>
+ <script type="text/javascript">
+/* without passing the parameters
+function circle_area(radius)
+{
+  var area=22/7*radius*radius;
+  return area;
+}
+var radius=prompt("enter the radius");
+var answer=circle_area(radius);
+document.write("area of circle is " + answer+ "");
+
+function circle_area(r)
+{
+  var r;
+  var area = 22/7*r*r;
+  return area;
+}
+var answer=circle_area(2);
+document.write(answer);
+*/
+//area of circle using object and methods
+function Circle (radius) {
+    this.radius = radius;
+    this.area = function () {
+        return Math.PI * this.radius * this.radius;
+    };
+    // define a perimeter method here
+    this.perimeter=function(radius){
+        return this.radius*2*Math.PI;
+        };
+};
+
+
+</script>
+</body>
+</html>

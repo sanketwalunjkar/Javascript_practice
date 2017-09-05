@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsObjectinArray</title>
+</head>
+<body>
+  <script>
+  //in order to store object in an array first you need to create the object
+  var myObject=new Object();//This tells JavaScript: "I want you to make me a new thing, and I want that thing to be an Object.
+  myObject.name='vishal';//arrayName.property=value
+  myObject.age=15;
+  //creat new araay
+  document.write(myObject.name,myObject.age);//printing the object
+  var newArray=[[myObject.name,myObject.age]];//here we are storing object values in array
+  document.write('<br>'+newArray);//print the array
+
+
+  /*
+  var bob = {
+      firstName: "Bob",
+      lastName: "Jones",
+      phoneNumber: "(650) 777-7777",
+      email: "bob.jones@example.com"
+  };
+  var mary={
+
+      firstName: "Mary",
+      lastName: "Johnson",
+      phoneNumber: "(650) 888-8888",
+      email: "bob.jones@example.com"
+  };
+
+  var contacts=new Array;
+  contacts[0]=bob;
+  contacts[1]=mary;
+  console.log(contacts[1].phoneNumber);
+
+
+//program 3
+
+var bob = {
+    firstName: "Bob",
+    lastName: "Jones",
+    phoneNumber: "(650) 777-7777",
+    email: "bob.jones@example.com"
+};
+
+var mary = {
+    firstName: "Mary",
+    lastName: "Johnson",
+    phoneNumber: "(650) 888-8888",
+    email: "mary.johnson@example.com"
+};
+
+var contacts = [bob, mary];
+
+// printPerson added here
+var printPerson=function(person){
+
+    console.log(contacts[0].firstName +" "+ contacts[0].lastName);
+    console.log(contacts[1].firstName +" "+ contacts[1].lastName);
+    };
+
+
+  */
+</script>
+</body>
+</html>
