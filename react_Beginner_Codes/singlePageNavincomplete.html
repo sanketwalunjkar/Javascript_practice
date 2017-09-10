@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SINGLE PAGE NAV</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<style>
+body{
+  background-color: #eee;
+  font-family: monospace,sans-serif;
+}
+.container{
+  width:1170px;
+  margin: 0 auto;
+}
+.cardWrapper{
+  height: 400px;
+  width: 550px;
+  padding: 0;
+  background-color: #eee;
+  border: 1px solid red;
+}
+</style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div id='root'></div>
+  </div>
+<script type="text/babel">
+    var App = React.createClass({
+
+      getInitialState: function() {
+        return ({
+          stateName : ''
+        });
+      },
+
+      changeState: function(name) {
+        this.setState({
+          stateName : name
+        });
+      },
+
+      getComponent: function(componentName) {
+          switch (componentName) {
+            case 'home': return (<Home text='Home' />);
+            case 'about': return (<About text='about' />);
+            case 'gallery': return (<Gallery text='gallery' />);
+            default: return (<Home text='Home' />);
+          }
+      },
+
+      render: function(){
+          return (
+            <div className="cardWrapper">
+                <button onClick={this.changeState.bind(this, 'home')} className="btn btn-info">HOME</button>
+                <button onClick={this.changeState.bind(this, 'about')} className="btn btn-info">ABOUT</button>
+                <button onClick={this.changeState.bind(this, 'gallery')} className="btn btn-info">Contact</button>
+                <div>{this.getComponent(this.state.stateName)}</div>
+            </div>
+          );
+        }
+    });
+
+
+    const About = (props) =>
+        return (
+            <div>
+                <h2>{this.props.text}</h2>
+                <p>this is Home page of your website </p>
+            </div>
+        );
+    }
+
+
+    const About = (props) => {
+        return (
+            <div>
+                <h2>{props.text}</h2>
+                <p>this is {props.text} page</p>
+            </div>
+        );
+    }
+
+    const Gallery = (props) => {
+        return (
+            <div>
+                <h2>{props.text}</h2>
+                <p>this is {props.text} page</p>
+            </div>
+        );
+    }
+
+    ReactDOM.render(<App menu="navigation"/>,document.getElementById('root'));
+</script>
+</body>
+</html>
