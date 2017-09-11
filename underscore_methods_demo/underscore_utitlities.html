@@ -41,7 +41,7 @@ body{
   5)objects functions
   6)Chaining
   7)
-  <ul class="utilityListing">
+  <ul class="utilityListing hide">
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(1)underscore.map</h2>
           <div class='bodyContent'>
@@ -150,9 +150,67 @@ body{
           <div class='bodyContent'>
           </div>
       </li>
+  </ul>
+  <ul className='utilityListing'>
       <li>
-          <h2 class="mainHead" onclick="toggleContent(event)">(12)underscore.pluck</h2>
+          <h2 class="mainHead" onclick="toggleContent(event)">(1)underscore.keys</h2>
           <div class='bodyContent'>
+              <p>it gives all the keys of an object in one array</p>
+              <p>let result = _.keys({name: 'vishal', age: 24});</p>
+              <h5>result => ['name', 'age'] </h5>
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(2)underscore.values</h2>
+          <div class='bodyContent'>
+              <p>it gives all the values of an object in one array</p>
+              <p>let result = _.values({name: 'vishal', age: 24});</p>
+              <h5>result => ['vishal', 24] </h5>
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(3)underscore.mapObject</h2>
+          <div class='bodyContent'>
+              <p>its just like array.map but its used for object</p>
+              <p>_.mapObject({name: 'vishal', age: 24}, (val, key) => {
+                    return val + 5;
+                  });
+              </p>
+              <h5>result => {name: "vishal5", age: 29} </h5>
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(4)underscore.pairs</h2>
+          <div class='bodyContent'>
+              <p>it converts object into list of [key value] pairs.result is array</p>
+              <p>let result = _.pairs({name: 'vishal', age: 24});</p>
+              <h5>result => [['name': 'vishal'], ['age': 24]] </h5>
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(5)underscore.pick</h2>
+          <div class='bodyContent'>
+              <p>it picks the key value pairs based on specified condition</p>
+              <p>let result = _.pick({name: 'vishal', age: 24} , (val, key) => { return val > 23 });</p>
+              <h5>result => {age: 24} </h5>
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(6)underscore.omit</h2>
+          <div class='bodyContent'>
+              <p>.exact opposite of _.pick. it omits the key value pairs based on specified condition and return other key value pairs</p>
+              <p>let result = _.omit({name: 'vishal', age: 24} , (val, key) => { return val > 23 });</p>
+              <h5>result => {name: 'vishal'} </h5>
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(7)underscore.has</h2>
+          <div class='bodyContent'>
+              <p>returns true if given key is present in object else false</p>
+              <p>let result = _.has({name: 'vishal', age: 24} , 'age');</p>
+              <h5>result => true </h5>
+              <p>let result = _.has({name: 'vishal', age: 24} , 'ages');</p>
+              <h5>result => false </h5>
           </div>
       </li>
       <li>
