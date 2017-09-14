@@ -214,48 +214,103 @@ body{
           </div>
       </li>
       <li>
+        <h2 class="mainHead" onclick="toggleContent(event)">(7)underscore.clone</h2>
+        <p>Create a shallow-copied clone of the provided plain object. Any nested objects or arrays will be copied by reference, result does not contains duplicate values</p>
+        <p>let result = underscore.clone(1,2,3,4,2,2)</p>
+        <p>result => 1,2,3,4</p>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(7)underscore.isEqual</h2>
+          <div class='bodyContent'>
+              <p>returns true both objects passed are true else return false</p>
+              <p>let result = _.isEqual(1,2);</p>
+              <h5>result => false </h5>
+              <p>let result = _.isEqual([1,2,3],[1,2,3]);</p>
+              <h5>result => true </h5>
+              <p>let result1 = [{name: 'vishal', age: 24}];</p>
+              <p>let result2 = [{name: 'vishal', age: 24}];</p>
+              <p>let result3 = _.isEqual(result1,result2)</p>
+              <h5>result => true</h5>
+          </div>
+      </li>
+      <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(13)underscore.isEmpty</h2>
           <div class='bodyContent'>
+            <p>return true if object is empty</p>
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(13)underscore.isElement</h2>
+          <div class='bodyContent'>
+            <p>return true if object is DOM element</p>
           </div>
       </li>
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(14)underscore.isNumber</h2>
           <div class='bodyContent'>
+            returns true if object is a number
           </div>
       </li>
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(15)underscore.isString</h2>
           <div class='bodyContent'>
+            returns true if object is a string
           </div>
       </li>
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(16)underscore.isObject</h2>
           <div class='bodyContent'>
+            returns true if object is an array
           </div>
       </li>
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(17)underscore.isNaN</h2>
           <div class='bodyContent'>
+            <p>Returns true if object is NaN.
+Note: this is not the same as the native isNaN function, which will also return true for many other not-number values, such as undefined.</p>
           </div>
       </li>
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(18)underscore.isNull</h2>
           <div class='bodyContent'>
+              returns true of object is null
           </div>
       </li>
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(19)underscore.isUndefined</h2>
           <div class='bodyContent'>
+            returns true of object is undefined
           </div>
       </li>
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(20)underscore.isRegExp</h2>
           <div class='bodyContent'>
+            returns true of object is regular expression
           </div>
       </li>
       <li>
           <h2 class="mainHead" onclick="toggleContent(event)">(21)underscore.isArray</h2>
           <div class='bodyContent'>
+            returns true if object is an array
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(21)underscore.isDate</h2>
+          <div class='bodyContent'>
+            returns true if object is a date
+          </div>
+      </li>
+
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(21)underscore.isFinite</h2>
+          <div class='bodyContent'>
+            returns true if object is finite
+          </div>
+      </li>
+      <li>
+          <h2 class="mainHead" onclick="toggleContent(event)">(21)underscore.isBoolean</h2>
+          <div class='bodyContent'>
+            returns true if object is boolean value
           </div>
       </li>
       <li>
