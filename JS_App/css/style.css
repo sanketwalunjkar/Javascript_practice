@@ -1,0 +1,37 @@
+/* || general styles */
+
+html {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+body {
+  background-color: #eee;
+  font-family: monospace,sans-serif;
+}
+
+.container{
+  width:1170px;
+  margin: 0 auto;
+}
+
+.hide {
+  display: none;
+}
+
+.mainHead {
+  cursor: pointer;
+}
+
+.noCursor {
+  cursor: auto;
+}
+
+.list-group {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.studentDataWrap {
+  width: 700px;
+  margin: 50px auto;
+}
