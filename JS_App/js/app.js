@@ -21,15 +21,13 @@ function addName() {
   }
 }
 
-function SearchName() {
-  let searchTerm = document.getElementById('searchTerm').value;
-  let list = document.getElementsByClassName('studentName');
-  if(!_.isEmpty(searchTerm)) {
-    var searchResult = _.filter(list, (index, key) => {
-      return index.innerHTML.indexOf(searchTerm) > -1;
+function searchName() {
+    let searchTerm = event.currentTarget.value;
+    let list = document.getElementsByClassName('studentName');
+    let result = _.filter(list, (index, key) => {
+        return index.innerHTML.indexOf(searchTerm) > -1 ;
     });
-    alert(`${searchResult.length} results found`);
-  } else {
-    alert('enter search term');
-  }
+    let data  = _.map(result, (index, key) => {
+        index.innerHTML;
+    });
 }

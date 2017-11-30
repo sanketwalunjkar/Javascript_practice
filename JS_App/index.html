@@ -10,12 +10,26 @@
 <body class="container">
   <div class="studentDataWrap clearfix">
     <div class="addDataWrap pull-left">
-      <input class="btn btn-alert noCursor" type="text" name="userInput" id="userInput" value="" placeholder="Add Name"/>
+      <input
+        class="btn btn-alert noCursor"
+        type="text"
+        name="userInput"
+        id="userInput"
+        value=""
+        placeholder="Add Name"
+      />
       <button class="btn btn-info" id="submitButton" onClick="addName()">Submit</button>
     </div>
     <div class="searchDataWrap pull-right">
-      <input class="btn btn-alert noCursor" type="text" name="searchTerm" id="searchTerm" value="" placeholder="Search" />
-      <button class="btn btn-info" id="submitButton" onClick="SearchName()">Search</button>
+      <input
+        class="btn btn-alert noCursor"
+        type="text"
+        name="searchTerm"
+        id="searchTerm"
+        value=""
+        placeholder="Search"
+        onKeyUp="searchName(event)"
+      />
     </div>
   </div>
   <ul id="studentList" class="list-group"></ul>
